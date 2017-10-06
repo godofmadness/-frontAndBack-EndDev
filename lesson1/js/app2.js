@@ -20,11 +20,14 @@
 
 
   var addTodoToList = function(todo) {
+
       var trEl = document.createElement("tr");
       var tdEl = document.createElement('td');
 
+
       trEl.classList = "todo";
       tdEl.classList = "text-left";
+
 
       var tdelTextNode = document.createTextNode(todo.text);
       tdEl.appendChild(tdelTextNode);
@@ -34,12 +37,23 @@
   }
 
 
-  for (var i = 0; i < $todoList.length; i++) {
-    $todoList[i].addEventListener("click", function(e){
-      toggleClass(e.currentTarget, "completed");
-    });
-  }
+  // for (var i = 0; i < $todoList.length; i++) {
+  //   $todoList[i].addEventListener("click", function(e){
+  //     toggleClass(e.currentTarget, "completed");
+  //   });
+  // }
 
+
+  document.getElementsByClassName("todo-container")[0].addEventListener("click",function(e){
+     //target is the element that triggered the event (e.g., the user clicked on)
+    // currentTarget is the element that the event listener is attached to.
+     console.log(e.target)
+     console.log(e.currentTarget);
+
+
+
+     toggleClass(e.target, "completed");
+  });
 
 function toggleClass(element, className) {
 
@@ -54,11 +68,8 @@ function toggleClass(element, className) {
   } else {
     elementClassArray.push(className);
   }
-
   element.className = elementClassArray.join(" ");
 }
-
-
 
 // 1. add to trs listener onclick
 
